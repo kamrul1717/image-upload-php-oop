@@ -49,25 +49,47 @@ $db = new Database();
 			</tr>
 		</table>
 	</form>
-		<table>
+		<table width="100%">
 			<tr>
-				<th>NO</th>
-				<th>Image</th>
-				<th>Action</th>
+				<th width="30%">NO</th>
+				<th width="40%">Image</th>
+				<th width="30%">Action</th>
 			</tr>
+			<?php
+			if (isset($_GET['del'])) {
+				$id = $_GET['del'];
+
+				$getquery = "SELECT * FROM tbl_image WHERE id='$id'";
+				$getImg = $db->select($getquery);
+
+				if ($getImg) {
+					while ($imgdata = $getImg->fetch_assoc()) {
+					$delimg = $imgdata['image'];
+					unlink($delimg);
+				}
+				}
+
+				$query = "DELETE FROM tbl_image WHERE id='$id'";
+				$delImage = $db->delete($query);
+				if ($delImage) {
+					echo "<span class='success'>Image Deleted Successfully.</span>";
+				}else{
+					echo "<span class='error'>Image Not Deleted</span>";
+				}
+			}
+			?>
 			<?php
 				$query = "SELECT * FROM tbl_image";
 				$getImage = $db->select($query);
 				if ($getImage) {
-					$i=1;
+					$i=0;
 					while($result = $getImage->fetch_assoc()){
 						$i++;
-
 			?>
 			<tr>
 				<td><?php echo $i; ?></td>
 				<td><img src="<?php echo $result['image']; ?>" height="40px" width="50px"></td>
-				<td><a href="?=<?php echo $result['id']; ?>">Delete</a></td>
+				<td><a href="?del=<?php echo $result['id']; ?>">Delete</a></td>
 			</tr>
 			<?php } } ?>
 		</table>
