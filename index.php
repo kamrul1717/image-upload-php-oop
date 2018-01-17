@@ -1,4 +1,10 @@
 <?php include('inc/header.php') ?>
+<?php
+include('lib/config.php');
+include('lib/Database.php');
+$db = new Database();
+?>
+
 <div class="myform">
 	<form action="" method="post" enctype="multipart/form-data">
 		<table>
