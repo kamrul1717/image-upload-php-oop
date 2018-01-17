@@ -41,6 +41,20 @@
 		input[type="submit"], input[type="file"]{
 			cursor: pointer;
 		}
+
+		.success{
+			color: green;
+			font-size: 18px;
+			display: block;
+			margin-top: 10px;
+		}
+
+		.error{
+			color: red;
+			font-size: 18px;
+			display: block;
+			margin-top: 10px;
+		}
 	</style>
 </head>
 <body>

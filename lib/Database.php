@@ -26,7 +26,7 @@ class Database{
 
 	// Insert Data
 	public function insert($data){
-		$insert_row = $this->link->query($data) or die($his->link->error.__LINE__);
+		$insert_row = $this->link->query($data) or die($this->link->error.__LINE__);
 		if ($insert_row) {
 			return $insert_row;
 		}else{
@@ -36,7 +36,7 @@ class Database{
 
 	//Select Data
 	public function select($data){
-		$result = $this->link->query($data) or die($his->link->error.__LINE__);
+		$result = $this->link->query($data) or die($this->link->error.__LINE__);
 		if ($result->num_rows > 0) {
 			return $result;
 		}else{
