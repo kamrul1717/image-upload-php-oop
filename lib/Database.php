@@ -43,6 +43,16 @@ class Database{
 			false;
 		}
 	}
+
+	//Delete Data
+	public function delete($data){
+		$delete_row = $this->link->query($data) or die($this->link->error.__LINE__);
+		if ($delete_row) {
+			return $delete_row;
+		}else{
+			false;
+		}
+	}
 }
 
 

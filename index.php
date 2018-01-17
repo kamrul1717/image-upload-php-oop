@@ -49,5 +49,27 @@ $db = new Database();
 			</tr>
 		</table>
 	</form>
+		<table>
+			<tr>
+				<th>NO</th>
+				<th>Image</th>
+				<th>Action</th>
+			</tr>
+			<?php
+				$query = "SELECT * FROM tbl_image";
+				$getImage = $db->select($query);
+				if ($getImage) {
+					$i=1;
+					while($result = $getImage->fetch_assoc()){
+						$i++;
+
+			?>
+			<tr>
+				<td><?php echo $i; ?></td>
+				<td><img src="<?php echo $result['image']; ?>" height="40px" width="50px"></td>
+				<td><a href="?=<?php echo $result['id']; ?>">Delete</a></td>
+			</tr>
+			<?php } } ?>
+		</table>
 </div>
 <?php include('inc/footer.php') ?>
